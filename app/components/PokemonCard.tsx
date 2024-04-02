@@ -27,7 +27,7 @@ const PokemonCard = ({ pokemon, pokemonColor }: PokemonTypes) => {
       <Card
         size="1"
         variant="classic"
-        className="relative h-72 w-full items-end rounded-lg backdrop-blur-sm hover:border"
+        className="relative h-60 w-full items-end rounded-lg backdrop-blur-sm hover:border md:h-72"
       >
         <div
           style={{ backgroundColor: pokemonColor }}
@@ -39,7 +39,7 @@ const PokemonCard = ({ pokemon, pokemonColor }: PokemonTypes) => {
             alt={`${pokemon.name}-img`}
             width={200}
             height={200}
-            className="mx-auto block aspect-auto max-h-48 object-contain"
+            className="mx-auto block aspect-auto max-h-40 object-contain md:max-h-48"
           />
           <Heading
             as="h2"
