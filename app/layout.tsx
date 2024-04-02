@@ -1,5 +1,5 @@
 "use client";
-import { Suspense, useState } from "react";
+import { Suspense, useState, useEffect } from "react";
 import { Theme } from "@radix-ui/themes";
 import Header from "./components/Header";
 import Loading from "./loading";
@@ -14,7 +14,21 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const [theme, setTheme] = useState<ThemeType>("light");
+  // Init theme state from LS or default to "light"
+  const [theme, setTheme] = useState<ThemeType>(() => {
+    if (typeof window !== "undefined") {
+      const storedTheme = localStorage.getItem("theme");
+      return (storedTheme && (storedTheme as ThemeType)) || "light";
+    }
+    return "light"; // Fallback if LS is not available
+  });
+
+  // Update LS when theme changes
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem("theme", theme);
+    }
+  }, [theme]);
 
   const toggleTheme = () => {
     setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
