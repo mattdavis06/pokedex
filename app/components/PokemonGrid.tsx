@@ -1,16 +1,16 @@
 "use client";
 import { useState } from "react";
-import { PokemonTypes, PokemonDataTypes } from "../types";
+import { PokemonDataTypes, PokemonTypes } from "../types";
 import { getPokemonTypeColor } from "../utils/Utils";
-import PokemonSearchInput from "./PokemonSearchInput";
 import PokemonCard from "./PokemonCard";
+import PokemonGridHeader from "./PokemonGridHeader";
 
 const PokemonGrid = ({ pokemon }: PokemonDataTypes) => {
   const [pokemonData, setPokemonData] = useState(pokemon);
 
   return (
     <>
-      <PokemonSearchInput pokemon={pokemon} setPokemonData={setPokemonData} />
+      <PokemonGridHeader pokemon={pokemon} setPokemonData={setPokemonData} />
 
       <section
         id="_pokemonCardsGrid"

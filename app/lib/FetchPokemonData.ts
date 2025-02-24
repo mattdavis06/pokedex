@@ -33,4 +33,4 @@ const fetchPokemon = async () => {
 
   return pokemonData;
 };
-export { getPokemonData, fetchPokemon };
+export { fetchPokemon, getPokemonData };

@@ -1,32 +1,44 @@
 "use client";
-import { ThemeTogglerBtnType } from "../types";
+import { Button } from "@/app/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/app/components/ui/dropdown-menu";
+import { Moon, Sun } from "lucide-react";
+import { useTheme } from "next-themes";
 
-const ThemeTogglerBtn: React.FC<ThemeTogglerBtnType> = ({
-  theme,
-  toggleTheme,
-}) => {
+const ThemeTogglerBtn = () => {
+  const { setTheme } = useTheme();
+
   return (
-    <div
-      onClick={toggleTheme}
-      className={`fixed right-0 top-0 z-10 cursor-pointer rounded-bl-lg  px-4 py-2 shadow-md transition duration-200 xl:rounded-bl-none xl:bg-transparent xl:shadow-none ${theme === "light" ? "bg-white" : "bg-black "}`}
-    >
+    <div className="flex items-center justify-end p-4">
       <div className="group flex items-center transition duration-200">
-        {theme === "light" ? (
-          <>
-            <p className="pr-1 text-xs text-black/70 group-hover:text-black lg:text-sm">
-              Dark Mode:
-            </p>
-            <span className="icon-[ic--twotone-dark-mode] h-5 w-5 text-black lg:h-6 lg:w-6 "></span>
-          </>
-        ) : (
-          <>
-            <p className="pr-1 text-xs text-white/70 group-hover:text-white lg:text-sm">
-              Light Mode:
-            </p>
-            <span className="icon-[ic--twotone-wb-sunny] h-5 w-5 text-white lg:h-6 lg:w-6 "></span>
-          </>
-        )}
+        <p className="pr-1 text-xs text-black/70 group-hover:text-black lg:text-sm dark:text-white/70 dark:group-hover:text-white">
+          Theme:
+        </p>
       </div>
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button variant="outline" size="icon">
+            <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+            <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+            <span className="sr-only">Toggle theme</span>
+          </Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent align="end">
+          <DropdownMenuItem onClick={() => setTheme("light")}>
+            Light
+          </DropdownMenuItem>
+          <DropdownMenuItem onClick={() => setTheme("dark")}>
+            Dark
+          </DropdownMenuItem>
+          <DropdownMenuItem onClick={() => setTheme("system")}>
+            System
+          </DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
     </div>
   );
 };

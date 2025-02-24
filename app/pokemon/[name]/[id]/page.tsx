@@ -1,8 +1,8 @@
+import AudioPlayBtn from "@/app/components/AudioPlayBtn";
+import BackBtn from "@/app/components/BackBtn";
 import { getPokemonData } from "@/app/lib/FetchPokemonData";
 import { getPokemonTypeColor } from "@/app/utils/Utils";
 import Image from "next/image";
-import BackBtn from "@/app/components/BackBtn";
-import AudioPlayBtn from "@/app/components/AudioPlayBtn";
 
 type AbilityType = {
   ability: {
@@ -53,20 +53,26 @@ const PokemonIndiviualPage = async ({ params }: { params: { id: number } }) => {
             </div>
             <div className="w-full space-y-5 py-5 md:w-1/2 md:px-8 md:py-0">
               <h1 className="text-2xl font-bold capitalize">
-                Name:{" "}
-                <span className="font-normal opacity-50">{pokemon.name}</span>
+                Name:
+                <span className="ml-2 font-normal opacity-50">
+                  {pokemon.name}
+                </span>
               </h1>
               <h2 className="text-2xl font-bold">
-                Height:{" "}
-                <span className="font-normal opacity-50">{pokemon.height}</span>
+                Height:
+                <span className="ml-2 font-normal opacity-50">
+                  {pokemon.height}
+                </span>
               </h2>
               <h2 className="text-2xl font-bold">
-                Weight:{" "}
-                <span className="font-normal opacity-50">{pokemon.weight}</span>
+                Weight:
+                <span className="ml-2 font-normal opacity-50">
+                  {pokemon.weight}
+                </span>
               </h2>
               <h2 className="text-2xl font-bold">
-                Base Experience:{" "}
-                <span className="font-normal opacity-50">
+                Base Experience:
+                <span className="ml-2 font-normal opacity-50">
                   {pokemon.base_experience}
                 </span>
               </h2>
@@ -85,7 +91,7 @@ const PokemonIndiviualPage = async ({ params }: { params: { id: number } }) => {
               </h3>
               <ul className="space-y-3 opacity-50">
                 {pokemon.abilities.map((ability: AbilityType) => (
-                  <li key={pokemon.id} className="text-xl capitalize">
+                  <li key={ability.ability.name} className="text-xl capitalize">
                     {ability.ability.name.replace("-", " ")}
                   </li>
                 ))}
@@ -98,7 +104,7 @@ const PokemonIndiviualPage = async ({ params }: { params: { id: number } }) => {
               </h3>
               <ul className="space-y-3">
                 {pokemon.stats.map((stat: StatType) => (
-                  <li key={pokemon.id} className="text-xl capitalize">
+                  <li key={stat.stat.name} className="text-xl capitalize">
                     {stat.stat.name.replace("-", " ")}:
                     <span className="ml-2 opacity-50">{stat.base_stat}</span>
                   </li>
@@ -116,7 +122,7 @@ const PokemonIndiviualPage = async ({ params }: { params: { id: number } }) => {
               {pokemon.moves.map((move: MoveType) => {
                 return (
                   <li
-                    key={pokemon.id}
+                    key={move.move.name}
                     className="text-xl capitalize opacity-50"
                   >
                     {move.move.name.replace("-", " ")}
