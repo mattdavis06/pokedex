@@ -1,10 +1,10 @@
-import { PokemonData } from "@/app/types";
+import { PokemonDataTypes } from "@/app/types";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import AbilitiesTable from "./tables/AbilitiesTable";
 import SpeciesTable from "./tables/SpeciesTable";
 import StatsTable from "./tables/StatsTable";
 
-const PokemonTabs = ({ pokemon }: PokemonData) => {
+const PokemonTabs = ({ pokemon }: PokemonDataTypes) => {
   return (
     <Tabs defaultValue="species" className="w-full flex-wrap py-6">
       <TabsList className="w-full">
