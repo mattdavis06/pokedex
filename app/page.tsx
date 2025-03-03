@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import PokemonGrid from "./components/PokemonGrid";
+
+import PokemonGrid from "./components/layout/PokemonGrid";
 import { fetchPokemon } from "./lib/FetchPokemonData";
 
 export const metadata: Metadata = {

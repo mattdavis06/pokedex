@@ -8,11 +8,11 @@ import {
   SelectValue,
 } from "@/app/components/ui/select";
 import { useState } from "react";
-import { PokemonTypes } from "../types";
+import { PokemonType } from "../../types";
 
 type PropsTypes = {
-  pokemon: PokemonTypes[];
-  setPokemonData: (filteredPokemon: PokemonTypes[]) => void;
+  pokemon: PokemonType[];
+  setPokemonData: (filteredPokemon: PokemonType[]) => void;
 };
 
 const PokemonFilterSelect = ({ pokemon, setPokemonData }: PropsTypes) => {
@@ -41,7 +41,7 @@ const PokemonFilterSelect = ({ pokemon, setPokemonData }: PropsTypes) => {
 
   return (
     <Select onValueChange={handleTypeChange}>
-      <SelectTrigger className="w-full sm:w-[180px]">
+      <SelectTrigger className="col-span-1 w-full">
         <SelectValue placeholder="Pokemon Type" />
       </SelectTrigger>
       <SelectContent>

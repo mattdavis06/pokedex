@@ -1,10 +1,9 @@
-import { Suspense } from "react";
-import Header from "./components/Header";
-import { ThemeProvider } from "./components/ThemeProvider";
-import ThemeTogglerBtn from "./components/ThemeTogglerBtn";
+// @ts-nocheck
+import { Suspense, unstable_ViewTransition as ViewTransition } from "react";
+import Header from "./components/layout/Header";
+import { ThemeProvider } from "./components/theme/ThemeProvider";
+import ThemeTogglerBtn from "./components/theme/ThemeTogglerBtn";
 import "./globals.css";
-
-type ThemeType = "light" | "dark";
 
 export default function RootLayout({
   children,
@@ -22,7 +21,9 @@ export default function RootLayout({
         >
           <ThemeTogglerBtn />
           <Header />
-          <Suspense fallback={"Loading..."}>{children}</Suspense>
+          <ViewTransition>
+            <Suspense fallback={"Loading..."}>{children}</Suspense>
+          </ViewTransition>
         </ThemeProvider>
       </body>
     </html>

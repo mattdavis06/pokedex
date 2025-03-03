@@ -1,5 +1,4 @@
 import type { Config } from "tailwindcss";
-const { addDynamicIconSelectors } = require("@iconify/tailwind");
 
 const config: Config = {
   darkMode: ["class"],
@@ -10,6 +9,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ["Nunito", "sans-serif"],
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
@@ -59,6 +61,6 @@ const config: Config = {
       },
     },
   },
-  plugins: [addDynamicIconSelectors(), require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate")],
 };
 export default config;

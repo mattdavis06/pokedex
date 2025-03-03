@@ -1,10 +1,10 @@
 import { Input } from "@/app/components/ui/input";
-import { useState } from "react";
-import { PokemonTypes } from "../types";
+import { PokemonType } from "@/app/types";
+import { startTransition, useState } from "react";
 
 type PropsTypes = {
-  pokemon: PokemonTypes[];
-  setPokemonData: (filteredPokemon: PokemonTypes[]) => void;
+  pokemon: PokemonType[];
+  setPokemonData: (filteredPokemon: PokemonType[]) => void;
 };
 
 const PokemonSearchInput = ({ pokemon, setPokemonData }: PropsTypes) => {
@@ -14,15 +14,17 @@ const PokemonSearchInput = ({ pokemon, setPokemonData }: PropsTypes) => {
     const query = e.target.value.toLowerCase();
     setSearchQuery(query);
 
-    const filteredPokemon = pokemon.filter((p) =>
-      p.name.toLowerCase().includes(query),
-    );
-    setPokemonData(filteredPokemon);
+    startTransition(() => {
+      const filteredPokemon = pokemon.filter((p) =>
+        p.name.toLowerCase().includes(query),
+      );
+      setPokemonData(filteredPokemon);
+    });
   };
 
   return (
     <Input
-      className="flex-1 text-base md:text-base"
+      className="col-span-1 text-base sm:col-span-2 md:col-span-3 md:text-base lg:col-span-4"
       type="search"
       placeholder="Search pokemon..."
       value={searchQuery}

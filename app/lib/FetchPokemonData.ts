@@ -11,6 +11,30 @@ const getPokemonData = async (id: number) => {
   }
 };
 
+const getPokemonSpeciesData = async (id: number) => {
+  try {
+    const res = await fetch(`${process.env.API_SPECIES_URL}${id}`);
+    const data = await res.json();
+
+    return data;
+  } catch (err) {
+    console.error("Error fetching data:", err);
+    return;
+  }
+};
+
+const getPokemonAbilityData = async (url: string) => {
+  try {
+    const res = await fetch(url);
+    const data = await res.json();
+
+    return data;
+  } catch (err) {
+    console.log("Error fetching data:", err);
+    return;
+  }
+};
+
 // Loop through the POKEMON_CARD_COUNT and pass in the id,
 // calling the getPokemonData FUNC, then push to an array
 const fetchPokemon = async () => {
@@ -33,4 +57,9 @@ const fetchPokemon = async () => {
 
   return pokemonData;
 };
-export { fetchPokemon, getPokemonData };
+export {
+  fetchPokemon,
+  getPokemonAbilityData,
+  getPokemonData,
+  getPokemonSpeciesData,
+};

@@ -1,11 +1,11 @@
+import HeaderImage from "@/public/pokedex-image.svg";
+import HeaderLogo from "@/public/pokedex-logo.png";
 import Image from "next/image";
 import Link from "next/link";
-import HeaderLogo from "@/public/pokedex-logo.png";
-import HeaderImage from "@/public/pokedex-image.svg";
 
 const Header = () => {
   return (
-    <header className="container mx-auto max-w-screen-md px-4 pb-8 pt-16">
+    <header className="container mx-auto max-w-screen-md px-4 py-6 md:pb-8 md:pt-16">
       <Link href={"/"} className="flex items-center justify-center md:gap-8">
         <Image
           src={HeaderLogo}

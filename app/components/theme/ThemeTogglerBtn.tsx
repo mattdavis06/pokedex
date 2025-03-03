@@ -14,11 +14,6 @@ const ThemeTogglerBtn = () => {
 
   return (
     <div className="flex items-center justify-end p-4">
-      <div className="group flex items-center transition duration-200">
-        <p className="pr-1 text-xs text-black/70 group-hover:text-black lg:text-sm dark:text-white/70 dark:group-hover:text-white">
-          Theme:
-        </p>
-      </div>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="outline" size="icon">
