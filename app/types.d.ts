@@ -1,6 +1,18 @@
+// Define pokemon result type
+interface PokemonResult {
+  name: string;
+  url: string;
+}
+
+// Define pokemon response type
+interface PokemonResponse {
+  results: PokemonResult[];
+}
+
 // Define a generic NameType to avoid repetition
 type NameType = {
   name: string;
+  url: string;
 };
 
 // Define the ability type
@@ -36,19 +48,26 @@ type PokemonType = {
     };
   }>;
   stats: PokemonStatType[];
+  height: number;
+  weight: number;
+  cries: {
+    latest: string;
+  };
+  base_experience: number;
 };
 
 // Define the Pokémon ability details
 type PokemonAbilityDetails = {
   effect_entries: {
-    effect: string;
-    language: NameType;
+    effect: {};
   }[];
   flavor_text_entries: {
     flavor_text: string;
     language: NameType;
   }[];
   name: string;
+  url: string;
+  language: NameType;
 };
 
 // Define the Pokémon species type
@@ -68,13 +87,17 @@ type PokemonSpeciesType = {
   is_legendary: boolean;
   is_mythical: boolean;
   shape: NameType;
+  name: string;
+  language: {
+    name: string;
+  };
 };
 
 // Define the main Pokémon data type
 type PokemonData = {
   pokemon: PokemonType;
-  pokemonAbility: PokemonAbilityDetails;
-  pokemonSpecies: PokemonSpeciesType;
+  pokemonAbility?: PokemonAbilityDetails;
+  pokemonSpecies?: PokemonSpeciesType;
 };
 
 // Define Pokémon color types
@@ -103,6 +126,8 @@ export {
   PokemonData,
   PokemonDataTypes,
   PokemonMoveType,
+  PokemonResponse,
+  PokemonResult,
   PokemonSpeciesType,
   PokemonStatType,
   PokemonType,

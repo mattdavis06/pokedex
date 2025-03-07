@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const Header = () => {
   return (
-    <header className="container mx-auto max-w-screen-md px-4 py-6 md:pb-8 md:pt-16">
+    <header className="container mx-auto max-w-screen-md px-4 py-4 md:py-6">
       <Link href={"/"} className="flex items-center justify-center md:gap-8">
         <Image
           src={HeaderLogo}

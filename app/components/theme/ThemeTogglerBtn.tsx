@@ -14,6 +14,7 @@ const ThemeTogglerBtn = () => {
 
   return (
     <div className="flex items-center justify-end p-4">
+      <p className="mr-2 text-base font-bold">Theme:</p>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="outline" size="icon">

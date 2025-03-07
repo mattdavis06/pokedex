@@ -1,10 +1,13 @@
+import { Skeleton } from "@/components/ui/skeleton";
+
 const loading = () => {
   return (
-    <main className="container mx-auto max-w-screen-lg px-8 sm:px-6 md:px-8">
-      <section className="py-12">
-        <div className="flex items-center justify-center gap-4">Loading...</div>
-      </section>
-    </main>
+    <section className="container mx-auto max-w-screen-lg">
+      <Skeleton className="mb-10 h-5" />
+      <Skeleton className="mb-6 h-[400px]" />
+      <Skeleton className="mb-6 h-9" />
+      <Skeleton className="mb-6 h-[500px]" />
+    </section>
   );
 };
 

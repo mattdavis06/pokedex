@@ -25,7 +25,9 @@ const PokemonBreadcrumb = () => {
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem className="capitalize">
-          <BreadcrumbPage>{pathPokemonName}</BreadcrumbPage>
+          <BreadcrumbPage className="font-bold">
+            {pathPokemonName}
+          </BreadcrumbPage>
         </BreadcrumbItem>
       </BreadcrumbList>
     </Breadcrumb>
