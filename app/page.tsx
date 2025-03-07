@@ -1,19 +1,16 @@
 import type { Metadata } from "next";
-import { fetchPokemon } from "./lib/FetchPokemonData";
-import PokemonGrid from "./components/PokemonGrid";
+import PokemonsWrapper from "./components/layout/PokemonsWrapper";
 
 export const metadata: Metadata = {
   title: "Pokedex",
   description:
-    "A Pokedex, created just for fun. With NextJS, Tailwind CSS, Radix-UI, TypeScript and the PokeAPI.",
+    "A Pokedex, created just for fun. With NextJS, Tailwind CSS, Shadcn, TypeScript and the PokeAPI.",
 };
 
-export default async function Home() {
-  const pokemonData = await fetchPokemon();
-
+export default function Home() {
   return (
-    <main className="container mx-auto max-w-screen-lg px-8 sm:px-6 md:px-8">
-      <PokemonGrid pokemon={pokemonData} />
+    <main className="container mx-auto max-w-screen-lg px-6 sm:px-8">
+      <PokemonsWrapper />
     </main>
   );
 }

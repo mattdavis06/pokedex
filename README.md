@@ -14,7 +14,7 @@ This is a personal project to build a Pokedex using the [PokeAPI](https://pokeap
 - CSS Grid
 - Mobile-first workflow
 - [TailwindCSS](https://tailwindcss.com/) - Utility-first CSS framework
-- [Radix-UI](https://www.radix-ui.com/) - Open Source Component Library
+- [Shadcn UI](https://ui.shadcn.com/) - Open Source Component Library
 - [NextJS](https://nextjs.org/) - React Framework
 - [TypeScript](https://www.typescriptlang.org/) - Superset of JavaScript
 - [PokeAPI](https://pokeapi.co/) - API

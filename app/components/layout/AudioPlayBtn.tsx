@@ -1,5 +1,6 @@
 "use client";
-import { useState } from "react";
+import { Pause, Play } from "lucide-react";
+import { useRef, useState } from "react";
 
 type AudioPlayBtnProps = {
   pokemonCry: string;
@@ -7,12 +8,14 @@ type AudioPlayBtnProps = {
 
 const AudioPlayBtn = ({ pokemonCry }: AudioPlayBtnProps) => {
   const [isPlaying, setIsPlaying] = useState(false);
-  let audio: HTMLAudioElement | null = null;
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const playPokemonCry = () => {
+    const audio = audioRef.current;
     if (audio) {
       if (isPlaying) {
         audio.pause();
+        audio.currentTime = 0;
       } else {
         audio.play();
       }
@@ -22,19 +25,12 @@ const AudioPlayBtn = ({ pokemonCry }: AudioPlayBtnProps) => {
 
   return (
     <div className="flex cursor-pointer" onClick={playPokemonCry}>
-      <audio
-        id="_pokemonAudio"
-        ref={(node) => {
-          audio = node;
-        }}
-      >
+      <audio ref={audioRef} onEnded={() => setIsPlaying(false)}>
         <source src={pokemonCry} type="audio/ogg" />
       </audio>
-      {isPlaying ? (
-        <span className="icon-[ic--twotone-pause-circle] ml-2 h-8 w-8 opacity-50 transition-opacity duration-200"></span>
-      ) : (
-        <span className="icon-[ic--twotone-play-circle] ml-2 h-8 w-8 opacity-50 transition-opacity duration-200 hover:opacity-100"></span>
-      )}
+      <div className="ml-2 opacity-50 transition-opacity duration-200">
+        {isPlaying ? <Pause /> : <Play />}
+      </div>
     </div>
   );
 };

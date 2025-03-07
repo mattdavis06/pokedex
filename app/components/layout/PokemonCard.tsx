@@ -1,4 +1,4 @@
-import { Card, Heading } from "@radix-ui/themes";
+import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -22,35 +22,25 @@ const PokemonCard = ({ pokemon, pokemonColor }: PokemonTypes) => {
     <Link
       key={pokemon.id}
       href={`pokemon/${pokemon.name}/${pokemon.id}`}
-      className="rounded"
+      className="overflow-hidden rounded-lg shadow-lg outline-4 outline-transparent transition-all hover:rotate-3 hover:outline"
+      style={{ outlineColor: pokemonColor }}
     >
-      <Card
-        size="1"
-        variant="classic"
-        className="relative h-72 w-full items-end rounded-lg backdrop-blur-sm hover:border"
-      >
+      <Card className="relative h-60 w-full items-end rounded-lg backdrop-blur-sm md:h-72">
         <div
           style={{ backgroundColor: pokemonColor }}
           className="absolute -right-[50px] -top-[20px] -z-10 h-[220px] w-[220px] rounded-full blur-sm"
         ></div>
-        <div className="flex h-full flex-col items-center justify-between">
+        <CardContent className="flex h-full flex-col items-center justify-between p-6">
           <Image
             src={pokemon.sprites.other.dream_world.front_default}
             alt={`${pokemon.name}-img`}
             width={200}
             height={200}
-            className="mx-auto block aspect-auto max-h-48 object-contain"
+            className="mx-auto block aspect-auto max-h-40 object-contain md:max-h-48"
+            priority
           />
-          <Heading
-            as="h2"
-            size="5"
-            wrap="pretty"
-            align="center"
-            className="py-2 capitalize"
-          >
-            {pokemon.name}
-          </Heading>
-        </div>
+          <h2 className="py-2 capitalize">{pokemon.name}</h2>
+        </CardContent>
       </Card>
     </Link>
   );
