@@ -5,7 +5,7 @@ This is a personal project to build a Pokedex using the [PokeAPI](https://pokeap
 ### Links
 
 - Repo URL: [Pokedex Repo](https://github.com/mattdavis06/pokedex)
-- Live Site URL: [//pokedex.netlify.app/](https://pokedex-nine-steel.vercel.app/)
+- Live Site URL: [https://pokedex-nine-steel.vercel.app/](https://pokedex-nine-steel.vercel.app/)
 
 ### Built with
 
