@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const PokemonDetailCard = ({ pokemon }: PokemonData) => {
   return (
-    <div className="flex h-[400px] w-full flex-wrap items-center justify-between rounded-lg border pt-6 shadow-lg backdrop-blur-sm sm:max-h-[600px] md:py-6">
+    <div className="flex w-full flex-wrap items-center justify-between rounded-lg border pt-6 shadow-lg backdrop-blur-sm sm:max-h-[630px] md:h-[400px] md:py-6">
       <div className="mb-12 w-full md:w-1/2 md:px-5 md:pb-0">
         <Image
           src={pokemon.sprites.other.dream_world.front_default}
