@@ -10,10 +10,14 @@ import {
 } from "@/components/ui/table";
 
 const AbilitiesTable = async ({ pokemon }: PokemonData) => {
-  const abilitiesData = await Promise.all(
-    pokemon.abilities.map((ability) =>
-      getPokemonAbilityData(ability.ability.url),
-    ),
+  const abilitiesData = (
+    await Promise.all(
+      pokemon.abilities.map((ability) =>
+        getPokemonAbilityData(ability.ability.url),
+      ),
+    )
+  ).filter(
+    (ability): ability is NonNullable<typeof ability> => Boolean(ability),
   );
 
   return (
