@@ -8,10 +8,21 @@ import PokemonTabs from "../../components/PokemonTabs";
 const PokemonIndiviualPage = async ({
   params,
 }: {
-  params: Promise<{ id: number }>;
+  params: Promise<{ id: string }>;
 }) => {
   const { id } = await params;
   const pokemon = await getPokemonData(id);
+
+  if (!pokemon?.types?.[0]) {
+    return (
+      <main className="container mx-auto max-w-screen-lg px-6 sm:px-8">
+        <PokemonBreadcrumb />
+        <p className="py-12 text-center text-lg opacity-70">
+          Pokemon not found.
+        </p>
+      </main>
+    );
+  }
 
   const primaryType = pokemon.types[0].type.name;
   const color = getPokemonTypeColor(primaryType);
@@ -20,14 +31,12 @@ const PokemonIndiviualPage = async ({
     <main className="container mx-auto max-w-screen-lg px-6 sm:px-8">
       <PokemonBreadcrumb />
 
-      {pokemon && (
-        <section className="relative">
-          {color && <PokemonDetailCardOverlay color={color} />}
+      <section className="relative">
+        {color && <PokemonDetailCardOverlay color={color} />}
 
-          <PokemonDetailCard pokemon={pokemon} />
-          <PokemonTabs pokemon={pokemon} />
-        </section>
-      )}
+        <PokemonDetailCard pokemon={pokemon} />
+        <PokemonTabs pokemon={pokemon} />
+      </section>
     </main>
   );
 };

@@ -11,9 +11,11 @@ import {
 } from "@/components/ui/table";
 
 const MovesTable = async ({ pokemon }: PokemonData) => {
-  const moveData = await Promise.all(
-    pokemon.moves.map((move) => getPokemonMoveData(move.move.url)),
-  );
+  const moveData = (
+    await Promise.all(
+      pokemon.moves.map((move) => getPokemonMoveData(move.move.url)),
+    )
+  ).filter((move): move is NonNullable<typeof move> => Boolean(move));
 
   return (
     <Table className="w-full">
@@ -34,7 +36,7 @@ const MovesTable = async ({ pokemon }: PokemonData) => {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {moveData.map((move, index) => (
+        {moveData.map((move) => (
           <TableRow key={move.name} className="text-base capitalize">
             <TableCell className="whitespace-nowrap font-bold">
               {move.name.replace("-", " ")}

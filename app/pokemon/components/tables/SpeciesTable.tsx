@@ -13,6 +13,14 @@ import {
 const SpeciesTable = async ({ pokemon }: PokemonData) => {
   const pokemonSpecies = await getPokemonSpeciesData(pokemon.id);
 
+  if (!pokemonSpecies) {
+    return (
+      <p className="py-6 text-center text-base opacity-70">
+        Species data unavailable.
+      </p>
+    );
+  }
+
   const {
     base_happiness,
     capture_rate,
@@ -93,13 +101,13 @@ const SpeciesTable = async ({ pokemon }: PokemonData) => {
             Growth Rate
           </TableCell>
           <TableCell className="text-right capitalize md:text-left">
-            {growth_rate.name}
+            {growth_rate?.name ?? "Unknown"}
           </TableCell>
         </TableRow>
         <TableRow className="text-base">
           <TableCell className="whitespace-nowrap font-bold">Habitat</TableCell>
           <TableCell className="text-right capitalize md:text-left">
-            {habitat.name}
+            {habitat?.name ?? "Unknown"}
           </TableCell>
         </TableRow>
         <TableRow className="text-base">
@@ -141,7 +149,7 @@ const SpeciesTable = async ({ pokemon }: PokemonData) => {
         <TableRow className="text-base">
           <TableCell className="whitespace-nowrap font-bold">Shape</TableCell>
           <TableCell className="text-right capitalize md:text-left">
-            {shape.name}
+            {shape?.name ?? "Unknown"}
           </TableCell>
         </TableRow>
       </TableBody>

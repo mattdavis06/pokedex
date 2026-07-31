@@ -21,7 +21,7 @@ const PokemonCard = ({ pokemon, pokemonColor }: PokemonTypes) => {
   return (
     <Link
       key={pokemon.id}
-      href={`pokemon/${pokemon.name}/${pokemon.id}`}
+      href={`/pokemon/${pokemon.name}/${pokemon.id}`}
       className="overflow-hidden rounded-lg shadow-lg outline-4 outline-transparent transition-all hover:rotate-3 hover:outline"
       style={{ outlineColor: pokemonColor }}
     >
@@ -31,14 +31,20 @@ const PokemonCard = ({ pokemon, pokemonColor }: PokemonTypes) => {
           className="absolute -right-[50px] -top-[20px] -z-10 h-[220px] w-[220px] rounded-full blur-sm"
         ></div>
         <CardContent className="flex h-full flex-col items-center justify-between p-6">
-          <Image
-            src={pokemon.sprites.other.dream_world.front_default}
-            alt={`${pokemon.name}-img`}
-            width={200}
-            height={200}
-            className="mx-auto block aspect-auto max-h-40 object-contain md:max-h-48"
-            priority
-          />
+          {pokemon.sprites.other.dream_world.front_default ? (
+            <Image
+              src={pokemon.sprites.other.dream_world.front_default}
+              alt={`${pokemon.name}-img`}
+              width={200}
+              height={200}
+              className="mx-auto block aspect-auto max-h-40 object-contain md:max-h-48"
+              priority
+            />
+          ) : (
+            <div className="mx-auto flex h-40 w-full items-center justify-center text-sm opacity-50 md:h-48">
+              No image
+            </div>
+          )}
           <h2 className="py-2 capitalize">{pokemon.name}</h2>
         </CardContent>
       </Card>

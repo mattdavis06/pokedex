@@ -29,12 +29,12 @@ const PokemonsWrapper = () => {
 
       try {
         // Fetch all Pokemon
-        const res = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}?offset=${offset}&limit=${limit}`,
-          {
-            cache: "no-store",
-          },
-        );
+        const apiUrl =
+          process.env.NEXT_PUBLIC_API_URL ??
+          "https://pokeapi.co/api/v2/pokemon";
+        const res = await fetch(`${apiUrl}?offset=${offset}&limit=${limit}`, {
+          cache: "no-store",
+        });
 
         // Throw error is res fails
         if (!res.ok) {

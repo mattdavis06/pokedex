@@ -1,48 +1,70 @@
-const getPokemonData = async (id: number) => {
-  try {
-    const res = await fetch(`${process.env.API_URL}${id}`);
-    const data = await res.json();
+const POKEMON_API_URL =
+  process.env.API_URL ?? "https://pokeapi.co/api/v2/pokemon/";
+const POKEMON_SPECIES_API_URL =
+  process.env.API_SPECIES_URL ??
+  "https://pokeapi.co/api/v2/pokemon-species/";
 
-    return data;
+const getPokemonData = async (id: number | string) => {
+  try {
+    const res = await fetch(`${POKEMON_API_URL}${id}`);
+
+    if (!res.ok) {
+      console.error("Error fetching pokemon data:", res.statusText);
+      return null;
+    }
+
+    return await res.json();
   } catch (err) {
     console.error("Error fetching data:", err);
-    return;
+    return null;
   }
 };
 
-const getPokemonSpeciesData = async (id: number) => {
+const getPokemonSpeciesData = async (id: number | string) => {
   try {
-    const res = await fetch(`${process.env.API_SPECIES_URL}${id}`);
-    const data = await res.json();
+    const res = await fetch(`${POKEMON_SPECIES_API_URL}${id}`);
 
-    return data;
+    if (!res.ok) {
+      console.error("Error fetching species data:", res.statusText);
+      return null;
+    }
+
+    return await res.json();
   } catch (err) {
     console.error("Error fetching data:", err);
-    return;
+    return null;
   }
 };
 
 const getPokemonAbilityData = async (url: string) => {
   try {
     const res = await fetch(url);
-    const data = await res.json();
 
-    return data;
+    if (!res.ok) {
+      console.error("Error fetching ability data:", res.statusText);
+      return null;
+    }
+
+    return await res.json();
   } catch (err) {
-    console.log("Error fetching data:", err);
-    return;
+    console.error("Error fetching data:", err);
+    return null;
   }
 };
 
 const getPokemonMoveData = async (url: string) => {
   try {
     const res = await fetch(url);
-    const data = await res.json();
 
-    return data;
+    if (!res.ok) {
+      console.error("Error fetching move data:", res.statusText);
+      return null;
+    }
+
+    return await res.json();
   } catch (err) {
-    console.log("Error fetching data:", err);
-    return;
+    console.error("Error fetching data:", err);
+    return null;
   }
 };
 
